@@ -1,0 +1,173 @@
+comandos sql
+
+CREATE DATABASE 'nome da base dos dados'
+CREATE TABLE  'nome da tabela'
+
+'ex'
+CREATE DATABASE cadastro --criar base de dados
+DEFAULT CARACTER SET = uft8  --seleciona o tipo de caracter por região
+DEFAULT COLLATE = uft8_default_general_ci -- colate padrão do caracter da região
+
+CREATE TABLE pessoas (
+id INT NOT NULL AUTO_INCREMENT
+nome VARCHAR NOT NULL (30)
+nascimento DATE 
+sexo ENUM ('M','F')
+altura DECIMAL (4,2)
+peso DECIMAL (5,2)
+nacionalidade VARCHAR (20) DEFAULT "BRASIL")
+PRIMARY KEY (id) -- selecionar ID como chave primaria, tipo de chave que não pode ter o mesmo valor 2 vezes
+DEFAULT CARACTER SET = uft8;
+-- criar tabelas e campos (comandos depois dos nomes dos campos definem o tipo de caracter usado)
+
+USE cadastro --para abrir a base de dados cadastro
+
+INSERT TO TABLE pessoas
+
+
+SELECT * pessoas --selecionar todos (*) os campos pessoas
+VALUES --valores, nesse caso os dados que vao nos campos
+
+
+ALTER TABLE -- modificar tabelas
+'add colunm' -- adicionar coluna
+'modify colunm' -- modifica tipo primitivo e constrains
+'drop colunm' -- exclui coluna
+'change colunm' --modifica nome, tipo primitivo e constrains
+'RENAME TO' -- mudar o nome da tabela para
+
+
+update cursos -- mudar campos nas colunas
+set nome = 'Java', ano = 2015, carga = 40 -- set = mudar (campos)
+where idcurso = 5 -- where = onde ( selecionar chave primaria)
+limit 1; -- pra garantir quantas linhas serão selecionadas vai ser alterada
+
+delete from cursos -- para deletar campos de colunas
+where
+limit
+
+truncate -- serve pra deletar todas as colunas da tabela
+
+        'COMANDOS' SELECT !!!!!!!!!!!!!!!!!!!!!!!!!!
+
+use cadastro;
+select * from cursos; -- mostra os dados selecionados da tabela
+
+select * from cursos
+order by nome; -- mostra os dados(campos) em ordem da linha(tupla) escolhida
+
+select * from cursos
+order by nome desc; -- mostra os dados(campos) em ordem invertida da linha(tupla) escolhida
+
+select nome, carga, ano from cursos --mostra os dados (campos) descriminados no comando, pode usar o comando "order by"]
+
+select * from cursos
+where ano = 2016 --seleção com filtro especifico "o comando where aceita todos os simbolos de comparação =,<,>,<=,>=,!="
+
+select * from cursos
+where ano between 2014 and 2016 --seleção com filtro especifico, 'between' faz busca 'entre' os dados descriminados
+
+select * from cursos
+where ano in (2014,2016) --seleção com filtro especifico, 'in' faz busca 'nos' os dados descriminados
+
+selec * from cursos
+where nome like 'a%' -- seleção com filtro, 'like' procura tudo que for semelhante
+
+select distinct (tupla,fila) from (lista,tabela) -- vai dar o quantos campos preenchidos diferentes tem sem considerar as coincidencias 
+
+select count (*) from cursos -- conta o numero de registros de filas na tabela selecionada
+select max (tupla,fila) from (lista,tabela) -- mostra o maior registro na fila solicitada 
+'função' min() 'mostra o menor registro' sum() 'mostra a soma dos registros' avg() 'mostra a média dos registros'
+desc ou 'describle' cursos; -- (descreva) mostra a estrutura da tabela
+
+	
+	'niveis de relacionamento entre entidades (base de dados)'
+
+
+'chave estrangeira' 
+
+relação 1 pra 1 a chave primaria da parte dominada (lado direito) passa pra o dominante
+
+relação 1 pra muitos a chave primaria do lado um passa para o lado de muitos
+
+relação muito para muitos, nesse caso se cria mais uma entidade (database) e essa vai intermediar a relação, recebendo as chaves de ambos os lados
+
+EX:
+
+create table gafanhotos_assistiu_curso (              #tabela criada
+ id int not null auto_increment, 
+ data_ date,
+ idgafanhoto int, 
+ idcursoass int,
+ primary key (id),
+ foreign key (idgafanhoto) references gafanhotos(id), #chave estrangeira tabela dominante
+ foreign key (idcursoass) references cursos(idcurso)  # chave estrangeira tabela relacionada
+ )
+ default charset = utf8; #formatação de caracteres
+
+
+'A' atomicidade "toda tarefa tem que ser por completo"
+'c' conscistencia "o banco de dados nao pode variar na transação"
+'i' isolamento "quando tem duas transações, elas tem que ocorrer de forma isolada"
+'d' durabilidade "tem que durar o tempo necessario, enquanto a transação acontece"
+
+
+para adicionar chave estrangeira primeiro precisa adc coluna com o mesmo tipo primitivo da coluna relacionada
+apos mandar o comandos
+
+alter table 'nome da tabela'
+add foreing key (nome da coluna criada)
+references "nome da tabela relacionada" (nome da coluna relacionada);
+
+comando para relacionar dados:
+
+update 'tabela dominante' set 'nome da coluna da chave estrangeira' = "indentificação do campo relacionado" where "coluna chave" = 'identificação'
+
+EX:
+
+update "Malambos" set cursopreferido = 33 where id_malambo = 1
+
+esse comando pode ser feito de forma manual tbm !!!
+
+
+						'FUNÇÃO  INNER JOIN'
+
+select lista.nomedacoluna, lista.nomedacoluna...(#as que forem necessarias)
+from lista dominante join lista relacionada
+on nomedacoluna dominante = nomedacoluna relacionada
+
+EX
+
+select "malambos.nome", 'malambos.cursopreferido', 'cursos.nomedocurso', 'cursos.ano'
+from malambos as m join cursos as c
+on 'malambos.cursopreferido' = 'cursos.idcurso'
+
+
+
+						'FUNÇÃO OUTER JOIN'
+
+select nomedalista.nomedacoluna, nomedalista.nomedacoluna, #(as que forem necessarias)
+from lista dominante left outer join lista relacionada
+on "nomedalista_dominante.coluna" = "nomedalista_relacionada.coluna"
+
+
+select m.nome, m.id_curso_preferido, c.nome, c.idcurso
+from malambos as m left outer join cursos as c            #(comando as abrevia o nome da lista)
+on m.id_curso_preferido = c.idcurso;
+
+
+                       'FUNÇÃO JOIN MAIS DE 2 TABELAS'
+
+select nomedalista.nomedacoluna, nomedalista.nomedacoluna, #(as que forem necessarias)
+from lista dominante1 as () join lista relacionada as () #(comando as abrevia o nome da lista)
+on 'nomedalista_dominante1.coluna' = 'nomedalista_relacionada.coluna'
+join lista dominante2 as ()
+on 'nomedaalista_dominante2.coluna' = 'nomedalista_relacionada.coluna'
+
+select m.id, m.nome, m.profissao, c.nome from malambos as m
+join malambo_viu as mv
+on m.id = mv.malambox
+join cursos as c
+on c.idcurso = mv.cursox
+
+
