@@ -1,0 +1,188 @@
+databricks
+
+é uma machine learn e tbm um banco de dados
+aceita as linguagens, python, java, sql, scala, sparkyR
+
+cluster são diversos computadores que trabalham interligados
+
+comandos:
+
+df1.write.format("csv").mode("overwrite").save("/test/marcacar") 
+#comando salvar, usar overwrite quando os arquivos ja existirem no seu note
+# .format("") serve pra fazer a escolha do formato de arquivo que vc deseja
+
+dfcar = spark.read.format("csv").option("header",True).load("/test/modelocar") 
+#comando ler, .option ("header", True) serve pra reconhecer a primeira linha como cabeçario
+
+dfcar.createOrReplaceTempView("carros")
+#criar tabela temporaria !
+
+%sql
+SELECT id_carro as idcar, modelo_carro as Mod
+FROM carros
+#comando select sql !!! (consulta feita na tabela temporaria)
+
+dfcar_sql = spark.sql ("""
+    SELECT id_carro as idcar, modelo_carro as Mod
+    FROM carros
+""")
+display(dfcar_sql)
+#criar uma lista com os comandos de consulta pedidos
+
+
+dfcarspark = dfcar.select("id_carro", "modelo_carro")
+#comando select sparky
+dfcarspark = dfcar.selectExpr("id_carro as idc", "modelo_carro as modelo")
+#para apelidar a coluna usa se Expr no select e o depois do nome da coluna, seguido do apelido
+
+
+dfcar.createOrReplaceTempView("carros")
+#criar tabela temporaria !
+
+%sql
+SELECT * FROM carros
+WHERE id_carro = 10
+OR modelo_carro = "Golf"
+#comando filtros where = onde (condição) or/and comandos complemnetares de filtros (consulta feita na tabela temporaria)
+
+
+dfcar_sql = spark.sql ("""
+    SELECT * FROM carros
+WHERE id_carro = 10
+OR modelo_carro = "Golf"
+""")
+display(dfcar_sql)
+#criar uma lista com os comandos de filtragem pedidos
+
+from pyspark.sql.functions import *
+display (
+  dfcar.where (
+      (col("id_carro") == '1') |
+       (col("modelo_carro") == "Golf" )
+))
+#fazer a consulta no pyspkark
+
+dfcarspk = dfcar.where (
+      (col("id_carro") == '1') |
+       (col("modelo_carro") == "Golf" )
+)
+#para criar uma lista com o resultado da consulta, basta criar uma vriavel e atribuindo a consulta a ela
+
+dfcar.createOrReplaceTempView("carros")
+#criar tabela temporaria !
+
+%sql
+ SELECT COUNT(*) FROM carros
+#comando para contar o numero de linhas da tabela
+
+%sql
+ SELECT COUNT(distinct*) FROM carros
+#adcionando o distinct não se conta dados que se repetem
+
+%sql
+ SELECT DISTINCT * FROM carros
+ #função para discriminar dados, sem levar em consderação valores que se repetem !
+
+ #!PYSPARK
+ tabelacarros.pyspark = tabelacarros.distinct()
+#função para discriminar dados, sem levar em consderação valores que se repetem !
+
+ 
+ %sql
+SELECT REPLACE (preco, '$', '') AS preco
+FROM carros
+#função para subistituir dados de um campo
+
+
+tabelacarros.createOrReplaceTempView("carros")
+tb_carros_sql = spark.sql ("""
+  SELECT REPLACE (preco, '$', '') AS preco
+  FROM carros
+  """)
+display(tb_carros_sql)
+#comando SQL para criar uma tabela substituindo valores dos campos
+
+#!PYSPARK
+#comando PYSPARK para criar uma tabela substituindo valores nos campos
+from pyspark.sql.functions import * # importar funções
+nome_da_tabela_nova = tabela_existente
+nome_da_tabela_nova = nome_da_tabela_nova.withColumn("preco", regexp_replace("preco", "\$", ""))
+
+
+#TIPAGEM SQL
+
+tabelacarros.pyspark2.createOrReplaceTempView("carros2")
+#criar tabela temporaria
+
+%sql
+SELECT
+CAST(id_carro AS INT) id_carro,
+ modelo_carro,
+ CAST(preco AS DOUBLE) preco,
+ CAST(cod_marca AS INT) cod_marca
+FROM carros2 
+ # comando SQL para alterar o tipo primitivo da coluna !!!!
+
+ #! comando PYSPARK tipagem
+
+ from pyspark.sql.functions import *
+ # PRIMEIRO IMPORTAR AS FUNÇÕES
+tabelacarros_spark3 = tabelacarros
+tabelacarros_spark3 = tabelacarros_spark3.withColumn(
+ "id_carro",
+ col("id_carro").cast("int")
+).withColumn(
+ "preco",
+ col("preco").cast("double"))
+
+#OUTRA FORMA
+
+from pyspark.sql.functions import *
+from pyspark.sql.types import *
+#fazer esses dois import
+
+tabelacarros_spark3 = tabelacarros
+tabelacarros_spark3 = tabelacarros_spark3.select(
+ "id_carro",
+ col("id_carro").cast("int"),
+ col("preco").cast("integer"))
+
+
+#COMANDO LIKE -- faz uma busca especifica nos valores dos campos
+
+from pyspark.sql.functions import *
+from pyspark.sql.types import *
+#fazer esses dois import
+
+nomedalista.createOrReplaceTempView("lista_temporaria") #se não houver, criar tabela temporaria
+
+%sql
+SELECT FROM carros
+WHERE modelo_carro LIKE "%aa%" #se a informação estiver entre % ele fara a busca no meio da palavra
+WHERE modelo_carro LIKE "%aa" #se a informação estiver depois % a busca sera no final da palavra
+WHERE modelo_carro LIKE "aa%" #se ainformação estiver antes % a busca sera no inicio da palavra
+#comando sql
+
+#CRIANDO TABELA
+
+from pyspark.sql.functions import * #importando funções
+nova_tabela_nome = tabela_existente
+nova_tabela_nome = nova_tabela_nome.where (
+col ("modelo_carro").like("%aa"))
+#comando pyspark criação tabela e busca pelo like
+
+#COMANDO BUSCA BETWEEN
+
+nomedalista.createOrReplaceTempView("lista_temporaria") #se não houver, criar tabela temporaria
+%sql
+SELECT * FROM carros10
+WHERE preco BETWEEN 60000 AND 80000
+
+
+#CRIANDO TABELA
+
+from pyspark.sql.functions import * #importando funções
+nova_tabela_nome = tabela_existente
+nova_tabela_nome = nova_tabela_nome.where (
+col ("preco").between (valor1, valor2)
+#comando pyspark criação tabela e busca pelo between
