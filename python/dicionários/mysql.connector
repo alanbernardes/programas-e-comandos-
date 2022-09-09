@@ -1,0 +1,88 @@
+BIBLIOTECA MYSQL.CONNECTOR
+
+import mysql.connector
+con = mysql.connector.connect  (
+  host= 'localhost',
+  user= 'root',
+  password= '',
+  database= 'cadastro')
+print ('conexão ok')
+cursor = con.cursor()
+
+#CREATE #comando criar
+#dados a adicionar na tabela
+
+nome = "Calleri Matador"
+profissao =  "fazedor de gols"
+nascimento = "1990-09-09" #lembrar das aspas em datas, letras e textos !!!
+sexo = "M"
+peso = 84.00  
+altura = 1.79
+nacionalidade = "Argentino" 
+    #comando do sql
+comando = f'INSERT INTO malambos (nome, profissao, nascimento, sexo, peso, altura, nacionalidade) VALUES ("{nome}", "{profissao}", "{nascimento}", "{sexo}", {peso}, {altura}, "{nacionalidade}")'
+cursor.execute(comando)
+con.commit() #alterar bedes
+
+cursor.close()
+con.close()
+
+
+      #Read #comando ler
+
+con = mysql.connector.connect  (
+  host= 'localhost',
+  user= 'root',
+  password= '',
+  database= 'cadastro')
+print ('conexão ok')
+
+cursor = con.cursor()
+
+comando = f 'select * from cursos' #comando do sql
+cursor.execute(comando)
+resultado = cursor.fetchall() #ler bancos
+print (resultado)
+
+cursor.close()
+con.close()
+
+      #Update #comando modificar
+
+con = mysql.connector.connect  (
+  host= 'localhost',
+  user= 'root',
+  password= '',
+  database= 'cadastro')
+print ('conexão ok')
+
+cursor = con.cursor()
+nome = "Calleri Matador" #dados q serão alterados !!
+peso = 86.50
+comando = f'UPDATE malambos SET peso = {peso} WHERE nome = "{nome}"' #comando pra modificar dados das tabelas
+cursor.execute(comando)
+con.commit() #alterar bedes
+
+cursor.close()
+con.close()
+
+
+      #Delete comando para deletar dados das tabelas
+
+con = mysql.connector.connect  (
+  host= 'localhost',
+  user= 'root',
+  password= '',
+  database= 'cadastro')
+print ('conexão ok')
+
+cursor = con.cursor()
+
+nome = "Elvis Schwarz" #dado a ser modificado
+comando = f'DELETE FROM malambos WHERE nome = "{nome}"' #comando sql
+
+cursor.execute(comando)
+con.commit() #alterar bedes
+
+cursor.close()    
+con.close()
