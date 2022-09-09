@@ -1,0 +1,195 @@
+python definição 
+  uma linguagen de programação, desenvolvida para ser simples e versatil
+
+comandos basicos e definições
+
+casting = mudança de tipo de arquivo
+int= inteiro, float= numeros reais, str= palavras(texto), 
+
+exemplo: 
+int(input("digito um numero ")) # sem o int a entrada seria uma string(tipo texto)
+a= "5" e b = "10" # a e b são duas strings
+c= int(a) + int(b)  # somando a e b e ja fazendo o casting pra int e stribuindo tudo pra C
+
+para repostas diferentes variando o resultado usa se if (se) e else (se não)
+
+if (a+b==c): faço isso
+else: faço akilo #não esquecer que um sinal = significa atribuiçao, para sinalizar igual usa se ==
+
+#comparar 3 valores se(if) a maior que b e maior que c é a, se (if) a maior que b e se não (else) é maior que c então é c
+if (a>b):
+       if (a>c): print ("o valor é esse", a) 
+       else: print ("o valor é esse", c)
+# senão(else) "no caso a>b"   se(if) b é maior que c resultado é b, se não (else) o resultado é C  
+else:
+       if (b>c): print ("o valor é esse", b)
+       else: print ("o valor é esse", c)
+
+
+#outra forma usando else e if juntos (elif)
+if (a>b,c): # se a>b,c
+    print ("o valor é esse", a)
+    # se a<b e b>c
+elif (a<b) and (b>c):
+    print ("o valor é", b)
+    #se não
+else:
+    print ("o valor é",c)
+
+
+    LAÇOS
+
+    Função while (quando) :
+
+    print ("otimo dia")
+print ("estudar pra melhorar")
+print ("vamos contar os numeros do 0 até 20")
+contador= 0
+while contador <=20: #quando contador for menor que 20 repetir comando
+    print (contador)
+    contador= contador+1 #comando
+
+print ("boa, agora vamos contar os impares de 0 a 20")
+contador2= 1
+while contador2 <=20:
+    print (contador2)
+    contador2= contador2+2
+
+print ("agora os pares, só pra treina")
+contador3= 0
+while contador3 <=20:
+     print (contador3)
+     contador3= contador3+2
+print ("fim do test, muito bem")
+
+fim
+
+#[exemplo de laço de conta]
+print ("vamo fazer continhas")
+contador = 0
+somador = 0
+quantidade = int(input("quantos numeros vc quer somar ?")) #lembrar de fazer casting quando pedir leitura (input)
+while contador < quantidade:
+        numero = int(input("de um valor numerico")) # lembrar de fazer casting quando pedir leitura ( input)
+        contador = contador + 1
+        somador = somador + numero
+print ("tó o resultado",somador)
+
+
+'comando pra trabalhar com listas'
+
+'append' adiciona um elemento na listas
+'extend' adiciona um lista a outra lista 
+'insert' inser um item na posição especificada
+'remove' remove o primeiro item da lista
+'pop'    remove o item da posição dada
+'index'  rerorna o index
+'count'  conta o numero de vezes que o item aparece na lista
+'sort'   ordena os itens da lista sem gerar uma nova lista 
+'reverte'invert a ordem da lista
+
+#laço para preenchimento de sexo
+x= input ("informe seu sexo [M,F]").strip().upper()[0]
+while x not in ("m,M,f,F"):
+    x= input ("resposta invalida, informe seu sexo [M,F] !").strip().upper()[0]
+    if x in ("M,m,F,f"):
+             print ("seu sexo é {}".format(x))
+   
+#laço para acerto de numero e contagem de tentativas
+from random import randint
+computador = randint (1,10)
+print ("selecionei um numero de 1 a 10")
+print ("tente scertar, eu te ajudo")
+acertou= False
+tentativas= 0
+while not acertou:
+    jogador = int(input("manda o palpite  !"))
+    tentativas+= 1
+    if jogador < computador:
+            print ("é mais")
+    elif jogador > computador:
+            print ("é menos")
+    else:
+        acertou= True
+print("boa, voce acertou com {} tentavas".format(tentativas))
+
+#outra maneira
+from random import randint
+computador = randint (1,10)
+print ("selecionei um numero de 1 a 10")
+print ("tente scertar, eu te ajudo")
+acertou= False
+tentativas= 0
+while not acertou:
+    jogador = int(input("manda o palpite  !"))
+    tentativas+= 1
+    if jogador == computador:
+        acertou= True
+    else:
+        if jogador < computador:
+            print ("é mais")
+        elif jogador > computador:
+            print ("é menos")
+print("boa, voce acertou com {} tentavas".format(tentativas))
+            
+
+                        "TUPLAS" !!
+
+são variaveis com mais de uma atribuição
+as tuplas são imutaveis !!
+
+lanche= ('hamburguer', 'suco', 'pizza', 'pudim') #variavel recebendo mais de um item
+print (lanche [2]) #comando entre colchetes para acessar o item desejado
+
+anche= ('hamburguer', 'suco', 'pizza', 'pudim')
+print (lanche [1:3])  #comando entre colchetes para acessar mais de um item na tupla
+
+lanche= ('hamburguer', 'suco', 'pizza', 'pudim') #laço em tuplas !!!
+for comida in lanche:
+    print(f'eu vou comer {comida}')
+print ('muito bom')
+
+lanche= ('hamburguer', 'suco', 'pizza', 'pudim')
+for cont in range (0, len(lanche)): #variavel de laço usando 'range' e 'len'
+    print(f'eu vou comer {lanche[cont]}')
+print ('muito bom')
+
+print sorted #mostrar em ordem alfabetica !!
+
+a=(2,4,6,9) #função len mostra quantos elementos tem dentro da tupla
+b=(1,3,2,5,7)
+c= a+b
+print (len(c))
+
+a=(2,4,6,9) #função count mostra quantos objetos descriminados tem
+b=(1,3,2,5,7)
+c= a+b
+print (c.count(2))
+
+a=(2,4,6,9) #função index mostra a posição do objetos descriminado dentro da tupla
+b=(1,3,2,5,7)
+c= a+b
+print (c.index(5))
+
+#não se pode apagar ou modificar um elemento da tupla, apenas apagar por inteiro usando a função "del"
+
+                    'LISTAS'
+
+listas são parecidas com tuplas, porem listas são mutaveis !!
+
+nomedalista.append #adiciona outros itens na ultima posição da lista
+nomedalista.insert(0,item) #numero relaciona a posição de inserção
+del nomedaalista[0] #formas de apagar itens da lista
+nomedalista.pop(0) #formas de apagar itens da lista
+nomedalista.remove('item') #formas de apagar itens da lista
+
+nomedalista.sort() #ordena a lista do menor pro maior
+nomedalista.sort(reverse=True) #ordena a lista em ordem reversa
+lean (nome da lista) #te da o tamanho da lista
+
+
+num=[1,3,9,8]
+num[3]= 2
+num.append(7)
+for c,v in enumerate(num): #para posição e valores !!!
+    print (f'os valores são {v} na poisição {c}...',) #resultado
