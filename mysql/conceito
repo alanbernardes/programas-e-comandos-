@@ -1,0 +1,73 @@
+mysql
+principal linguagem de programação de banco de dados
+comandos de controle do sql
+dml (linguagem de manipulação de data) o mais importante, usado para manipularmos os dados (adicionar, excluir ou alterar)
+dcl (linguagem de controle de data) serve para controlar a forma de acesso a base de dados
+ddl (definição de dados) criar alterar ou deletar objetos do banco de dados
+tcl (controle de transação) linguagem que executa um conjunto de execução
+dql (data query) faz as consultas nas informações
+
+Propriedades basicas da função mais usada o select ( consulta)
+
+1 quantidade e nome das colunas SELECT
+2 quais tabelas serão acessadas pra recuperar os dados FROM 
+3 quais condições para as linhas serem retornadas WHERE
+4 sequencia de ordenação das lin has ORDER BY 
+
+EX (CONSULTAR LIVROS EM UM BANCO DE DADOS)
+
+1 select (selecionar) (Id do produto, nome, preço)
+2 from (de onde) dbo.produtos (dbo é o endereço da tabela que guarda o produto selecionado)
+3 where (sendo que) preço>40 
+4 order by (ordernar por) ASC preço ascendente
+
+'Operadores' 
+
+aritimeticos + - / * 
+atribuição = 
+comparação =, <, >, <>note, != diferente, >=, <=
+operadores logicos and, or, not 
+contagnadores de strin (caracteres) *
+
+"Funções do SQL" 
+rotinas que rotarnam a valores
+
+1 "CONTAINSTABLE" funções rowset: retornam linhas ou objetos (que sao conjunto de linha que podem formar uma tabela)
+2 "AVG" "SUM" e "COUNT" funções de agrupamento: trabalham em agrupamentos mas retornam apenas a uma linha
+3 "RANK" "DENSE_RANK" funções de rank: retorna ao valor de rank de cada linha do resultado
+4 "CREATE FUNTCTION" funções escalares: funções que operam e rotornam um unico valor
+
+'comandos de controle de fluxo'
+
+begin and determinar um bloco
+"goto" posicionar em alguma parte do codigo
+"if else" como de ação 'se' ou 'se não'
+"return" retornar o valor
+"break" interromper um laço
+"continue" entar em um laço
+"while" tipo de laço
+"waitfor" esperar um tempo
+"try cath" quando houver erro no grupo try, redireciona o erro pro cath
+
+"grupo de arquivos" file group
+'mdf' grupo de arquivo (file group) primario
+'ndf' grupo de arquivo (file group) secundario
+'ldf' arquivo de log 
+
+"tipos de dados de sistema e tabelas"
+
+"numericos exatos" decimal e numeric
+"numericos aproximados" float e real 
+"caracteres fixos" char
+"caracteres variaveis" varchar
+"data e hora" datetime smalldatetime
+"versionamento de linhas" timestamp 
+"grandes volumes dados" text image
+"tamanho maximo" varcharmax, nvarcharmax, 
+
+"tipo de dado criado pelo usuario" alias
+
+
+
+
+
