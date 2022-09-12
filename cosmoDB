@@ -1,0 +1,73 @@
+cosmos db
+
+Uma tabela de armazenamento do Azure Table 'NÃO' é semelhante a um banco de dados relacional e tem relacionamentos, procedimentos armazenados, índices secundários e chaves estrangeiras.
+
+À medida que você adiciona linhas a uma tabela, o Armazenamento de Tabelas do Azure gerencia automaticamente as partições em uma tabela e aloca armazenamento conforme necessário. 
+Você não precisa executar nenhuma etapa adicional por conta própria.
+
+
+O Armazenamento de Tabelas do Azure implementa o modelo de valor-chave NoSQL. O que é um modelo de valor-chave NoSQL?
+
+Um item armazenado como um conjunto de campos e identificado por uma chave exclusiva
+
+Em uma tabela do Armazenamento de Tabelas do Azure, todas as linhas em uma tabela devem ter uma chave, mas, além disso, as colunas em cada linha podem variar.
+
+Os blobs podem ser organizados em uma hierarquia usando qual das seguintes estruturas, pastas, contêineres, contas de armazenamento
+
+Você pode provisionar uma conta do Cosmos DB usando qual das seguintes ofertas do Microsoft Azure, azure power shell, cli azure, portal azure
+
+Além do Cosmos DB, o Microsoft Azure oferece suporte aos seguintes serviços de dados não relacionais, data lake, az blobs, storage az
+
+camada de acesso quente tem custos de armazenamento mais altos do que as camadas fria e de arquivamento, mas os custos de acesso mais baixos.  
+
+A conectividade padrão do Azure Cosmos DB e do Armazenamento do Azure é habilitar o acesso ao mundo em geral. 
+Você pode se conectar a esses serviços de uma rede local, da Internet ou de uma rede virtual do Azure. 
+Embora esse nível de acesso pareça arriscado, a maioria dos serviços do Azure reduz esse risco exigindo autenticação antes de conceder acesso. 
+A autenticação é descrita posteriormente nesta unidade.
+
+O Azure Active Directory (Azure AD) oferece segurança superior e facilidade de uso em relação à autorização de chave de acesso. 
+É um serviço separado do Azure em que você adiciona usuários e outras entidades de segurança (como um aplicativo) a um domínio de segurança gerenciado pelo Azure AD.
+
+O Azure AD permite que você especifique quem ou o quê pode acessar seus recursos.
+O controle de acesso define o que um usuário ou aplicativo pode fazer com seus recursos depois de autenticados.
+
+como configurar a replicação no Cosmos DB ?
+Você determina que deseja replicar seus dados para outra região ao provisionar sua conta.
+
+A consistência eventual fornece a menor latência e a menor consistência. 
+A consistência forte resulta na maior latência, mas também na maior consistência. 
+
+Os documentos em um banco de dados Cosmos DB são organizados em contêineres. 
+Os documentos em um contêiner são agrupados em partições. 
+E uma partição contém um conjunto de documentos que compartilham uma chave de partição comum. 
+
+O Cosmos DB fornece sua própria API nativa, chamada de API SQL.
+O Cosmos DB também fornece outras APIs que permitem acessar esses documentos usando os conjuntos de comandos de outros sistemas de gerenciamento de banco de dados NoSQL. 
+Essas APIs são API de tabela, MongoDB, API Cassandra e API Gremlin.
+
+opções para carregar dados em um banco de dados Cosmos DB e consultar esses dados:
+'Cosmos DB SQL API client library' 'Cosmos DB Data Migration tool ' 'Azure Data Factory ' 'Cosmos DB BulkExecutor library ' 'Data Explorer'
+
+Embora o Azure Cosmos DB seja descrito como um sistema de gerenciamento de banco de dados NoSQL, a API SQL permite que você execute consultas semelhantes a SQL em bancos de dados Cosmos DB. 
+Essas consultas usam uma sintaxe semelhante à do SQL, mas existem algumas diferenças. 
+Isso ocorre porque os dados em um Cosmos DB são estruturados como documentos em vez de tabelas.
+
+Embora a sintaxe das funções agregadas seja semelhante ao ANSI SQL, ao contrário do ANSI SQL, a linguagem de consulta da API SQL não suporta a cláusula GROUP BY; 
+você não pode gerar subtotais para valores diferentes do mesmo campo em uma única consulta. 
+Você pode incluir mais de uma função agregada na cláusula SELECT de suas consultas.
+
+Em uma conta de armazenamento do Azure, você armazena blobs em contêineres. 
+Um contêiner fornece uma maneira conveniente de agrupar blobs relacionados e você pode organizar blobs em uma hierarquia de pastas dentro de um contêiner, semelhante aos arquivos em um sistema de arquivos em disco.
+
+Você pode usar o armazenamento de arquivos do Azure para armazenar arquivos compartilhados. 
+Os usuários podem se conectar a uma pasta compartilhada (também conhecida como compartilhamento de arquivos) e ler e gravar arquivos (se tiverem os privilégios apropriados) da mesma maneira que usariam uma pasta em uma máquina local.
+
+as seguintes ferramentas você pode usar para criar e gerenciar compartilhamentos de arquivos no Armazenamento do Azure
+'azure portal' 'azure storage explorer'
+
+Você pode carregar e baixar arquivos individuais de e para o armazenamento de arquivos do Azure manualmente, usando o Gerenciador de Armazenamento, o portal do Azure ou conectando o compartilhamento de arquivos ao seu computador desktop e arrastando e soltando arquivos no Explorador de Arquivos. 
+No entanto, se você precisar transferir um número significativo de arquivos para dentro e para fora do armazenamento de arquivos do Azure, use o utilitário AzCopy.
+
+Antes de poder usar o AzCopy, você gera um token SAS (assinatura de acesso compartilhado). 
+Um token SAS fornece acesso anônimo controlado, por tempo limitado a serviços e recursos em uma conta de armazenamento; os usuários não precisam fornecer credenciais adicionais. 
+Os tokens SAS são úteis em situações em que você não sabe com antecedência quais usuários exigirão acesso aos seus recursos.
