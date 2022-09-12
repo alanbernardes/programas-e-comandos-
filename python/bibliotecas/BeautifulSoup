@@ -1,1 +1,32 @@
+"BIBLIOTECA BEAUTIFULSOUP"
+serve para acessar conteudos especificos de um site
 
+             'COMANDOS BEAUTIFULSOUP'
+
+'BEAUTIFULSOUP'
+site = BeautifulSoup(conteudo, 'html.parser') #comando inicial pra atribuir uma variável ao BS e lhe informar (site, tipo do site)'a reuisição do requests'
+
+'.FIND' 
+ procura a tag da html selecionada no site (procura a primeira tag com as especificações solicitadas) 
+  site.find('div', attrs={'class':'mainArticle__imageWrap mainArticle__imageWrap--bigger'}) 
+   # variavel contendo as informações iniciais do BS antes do comando, dentro dos () vai a tag e os atributos
+
+ '.FINDALL' 
+ procura todas aa tags solicitadas da html selecionada no site 
+  site.find('div', attrs={'class':'mainArticle__imageWrap mainArticle__imageWrap--bigger'}) 
+   # variavel contendo as informações iniciais do BS antes do comando, dentro dos () vai a tag e os atributos  
+
+'ATTRS='
+ comando para indicar os atributos dentro da procura do comando '.find' 
+  site.find('div', attrs={'class':'mainArticle__imageWrap mainArticle__imageWrap--bigger'})
+   #se encotra detro dos () de busca do .find, geralmente fica apos a discriminação da tag
+
+'.PRETTIFY'
+ comando que organiza o codigo HTML na forma identitaria padão
+  print(buscaBS.prettify())
+   #utilizado no comando print depois da variavel atribuida ao comando .find
+
+'.TEXT'
+ comando que retira o codigo HTML e deixa apenas o texto 
+  print(busca_titulo.text) 
+   #utilizado no comando print, depois da varivel atribuida ao comando .find 
