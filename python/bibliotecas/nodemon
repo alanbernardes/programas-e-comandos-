@@ -1,0 +1,16 @@
+CONCEITO E CONFIGURAÇÕES DO NODE.JS
+
+O QUE É:
+Ele É uma plataforma de aplicação, na qual você escreve seus programas com Javascript que serão compilados, otimizados e interpretados pela máquina virtual V8
+Node.js é uma tecnologia assíncrona que trabalha em uma única thread de execução. 
+Por isso cada requisição ao Node.js não bloqueia o processo do mesmo, atendendo a um volume absurdamente grande de requisições ao mesmo tempo mesmo sendo single thread. 
+Para lidar bem com isso, você terá de aprender callbacks e promises (clique no link se quiser aprender).
+
+UTILIDADES:
+fazer APIs, backend de jogos, IoT, apps de mensagens e aplicações de tempo real
+
+CONFIGURAÇÕES DO NODEMON
+index.js: Arquivo principal da aplicação, um container que agrupará todos os módulos do sistema;
+server.js: Módulo que será responsável pelo servidor web;
+filehandler.js: Módulo que será utilizado pelo server.js e é responsável por manipular os arquivos solicitados pelo usuário;
+config.json: Arquivo de configuração cujos dados serão lidos e utilizados pela aplicação.
