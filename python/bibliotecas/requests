@@ -1,1 +1,20 @@
+"BIBLIOTECA REQUESTS"
+facilita as solicitações em HTTP
 
+                 'COMANDOS REQUESTS' 
+
+'.GET' 
+ utilizado para a requisição do site solicitado
+  resposta = requests.get('http://www.saopaulofc.net/spfc') #varaiavel criada para reponder o requests
+
+'.STATUSCODE'
+ mostra a condição (status) da sua requisição
+  print(resposta.status_code) #comando utilizando a variavel 'resposta' !!
+
+'.HEADERS'
+ mostra o cabeçalho (hearders) da sua requisição
+  print(resposta.headers) #comando utilizando a variavel 'resposta' !!
+
+'.CONTENT'
+ mostra o conteudo (content) da sua requisição
+  print(resposta.content) #comando utilizando a variavel 'resposta' !!
