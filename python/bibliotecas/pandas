@@ -1,1 +1,24 @@
+BIBLIOTECAS PANDAS
+utilizada para crianção, analise e manipulação de dados em py
 
+                  COMANDOS PANDAS
+                  
+#transoformando linhas em tabelas
+
+amigos = {'apelido':[ 'Xerom', 'Caramelo', 'Lebrucio', 'Markito', 'TatidoXrom'], #Dicionario do python
+			'avaliação':[ 7.0, 4.0, 3.0, 5.5, 4,5]
+			'aprovação':[ 'S', 'N', 'N', 'S', 'N']}
+dataframe = pd.DataFrame(nome do dicionario)
+print dataframe
+
+			comandos de leitura do pd
+
+(nome da lista).head() #comando para mostrar as primeiras linhas da lista
+(nome da lista).shape #comando para mostrar a quantidade de linhas e colunas de uma lista
+(nome da lista).decrible() #mostra a quantidade, a media, o desvio padrão, max, min, e percentil dos dados
+(nome da lista)[nome da coluna] #mostra a coluna selecionada da lista
+(nome da lista).loc[] #mostra as linhas selecionadas dentro dos colchetes (qdo o comando usar virgula necessita 2 fuck colchetes)
+(nome da lista).loc[nome da lista['nome da coluna'] == 'nome do dado'] #mostra linhas dos bancos com o mesmo nome do dado selecionado
+
+				##função loc pode ser atribuida a uma variavel!!!###
+"nome_da_variavel" = nome_do_lista.loc[numero das linhas]
