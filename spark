@@ -186,3 +186,59 @@ nova_tabela_nome = tabela_existente
 nova_tabela_nome = nova_tabela_nome.where (
 col ("preco").between (valor1, valor2)
 #comando pyspark criação tabela e busca pelo between
+
+#pesquisa por letras SUBSTRING função sql
+
+nomedalista.createOrReplaceTempView("lista_temporaria") #se não houver, criar tabela temporaria
+
+%sql
+SELECT
+ nome_da_coluna,
+ SUBSTRING( nome_da_coluna, 2, 2)
+ FROM nome_da_lista_temporaria
+ #comando para visualizar na lista temporaria
+
+ #COMANDO SQL PRA CRIAR TABELA
+nome_da_tabela = spark.sql ("""
+ SELECT modelo_carro,
+ SUBSTRING(modelo_carro, 2, 2)
+ FROM nome_da_tabela
+ """)
+
+#COMANDO PYSPARKY PRA CRIAR NOVA TABELA
+
+nome_da_tabela_nova = nome_da_tabela_original
+ nome_da_tabela_nova = nome_da_tabela_nova.withColumn(
+ "colunanova", substring("modelo_carro", 1, 1)
+)
+
+
+ #COMANDOS JOIN SQL E SPARK NO AZURE !!!
+
+ #comando para visualização em sql
+
+modelocarro_join.createOrReplaceTempView("modelo_temporario") 
+marcacarro_join.createOrReplaceTempView("marca_temporaria") #criar as tabelas temporarias
+
+%sql
+SELECT mt.*,mc.marca_carro  
+FROM modelo_temporario mt      #comando join sql
+INNER JOIN marca_temporaria mc
+ON mt.cod_marca = mc.cod_marca
+
+#criar uma tabela com comando join em SQL
+
+tabelainner = spark.sql("""
+SELECT mt.*,mc.marca_carro  
+FROM modelo_temporario mt
+INNER JOIN marca_temporaria mc
+ON mt.cod_marca = mc.cod_marca
+""")
+
+
+#COMANDO JOIN pySPARKY
+
+tabelajoinspark = modelocarro_join.join(
+ marcacarro_join,
+  (modelocarro_join.cod_marca == marcacarro_join.cod_marca),
+   "inner"  
