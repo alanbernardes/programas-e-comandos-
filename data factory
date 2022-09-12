@@ -1,0 +1,71 @@
+		'data factory'
+
+como funfa o data factory
+ serve pra extrair, manipular e carregar dados na nuvem (orquestramento de dados)
+
+"principal função, fazer ETL e ELT !"
+ 
+
+ETL = extrair, tranformar e gravar dados
+ a extração é feita na origem dos dados e pode ser arquivos: arquivos de texto, base de dados, web service, entre outros...
+ a transformação ocorre no local de extraçao 
+ a gravação do dado é feita no destino do mesmo, que são geralmente Data Warehouses, mas pode ser tambem em planilhas e bancos de dados
+
+ELT = extrair, gravar e tranformar dados
+  a extração é feita na origem dos dados e pode ser arquivos: arquivos de texto, base de dados, web service, entre outros...
+  a gravação do dado é feita no destino do mesmo, que são geralmente Data Warehouses, mas pode ser tambem em planilhas e bancos de dados
+  a transformação ocorre no local de destino apos o dado original ter sido gravado
+
+ETL é usado para dados relacionais, extrututarados e ambientes on-premise ou nuvens ('utilizados para pequenas quantidades de dados')
+ELT é usado em nuvens, com dados escalonaveis (é possivel modificar o tamanho/quantidade de arquivos eserviço) e fonte de dados não extruturaveis
+('utilizados para grandes quantidades de dados')
+
+atividades do data factory
+
+'get metadata' 
+  = faz a leitura dos meta dados do seu bando de dados...
+   'comandos do get metadata'
+
+'lookup'
+  = ler dados armazenados e depois e passa pra atividades seguintes
+O Lookup pode trabalhar em 2 modos:
+ Singleton mode – Retorna a primeira linha do dataset utilizado.
+   Caso queira obter o valor dos dados contidos nas colunas da primeira linha do JSON é necessário utilizar o código abaixo:
+    @activity(‘nome do lookup’).output.firstRow.columnName
+ Array mode – Retorna todos os dados do dataset utilizado.
+   Caso queira obter o valor dos dados contidos no array do JSON é necessário utilizar o código abaixo:
+    @activity(‘nome do lookup’).output.value
+Caso seja necessário passar o valor de uma coluna do retorno do array em um componente de iteração é necessário utilizar o código abaixo:
+   
+'stored procedure'
+  = realiza um procedimento de armazenamento de dados com ou sem paramentros que estão armazenados no seu BD 
+
+'wait'
+  = serve pra dar uma pausa entre um comando e outro 
+
+'filter'  
+  = filtra dados que vem de outras ações do data factory (discrimina dados selecionados)
+
+'ForEach'  
+  = faz uma interação com um conjunto de itens que estão em processos (dentro do for each é possivel colocar outra atividade do DF)
+
+'parametros no pipeline'
+  = introduz parametros (inteiro, flutuante, strirng, array...) no pipeline e executa junto com as atividades
+
+'execute pipeline'   
+  = realiza a chamada de outros pipeline ja existente no DF ( orquestrador de pipeline)
+
+"TRIGGERS NO ADF"
+  triguer ou gatilho é um comando que se auto executa quando uma condição é atendida, as trigguers são divididas em 4 tipos:
+
+'schedule'
+  voce pode controlar uma ou mais pipeline com cronograma definido (hora, dia e duração da atividade) 
+
+'tumbling window'
+  executa um unico pipeline em um intervalo especifico de tempo 
+
+'storage events'
+  essa trigger é executada quando ocorre uma alteração nos storagedata ("locais de armazenamento") blob storage ou data lake 
+   para que esa trigger funcione corretamente é necessario ativar o resource provider grind event
+   
+'custom events' comando ainda em desenvolvimento
