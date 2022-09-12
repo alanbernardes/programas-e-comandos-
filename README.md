@@ -1,2 +1,3 @@
-# estudos-e-anota-es
-anotações de programas, funções e comandos
+# estudos e anotações
+
+anotações de programas funções e comandos !
